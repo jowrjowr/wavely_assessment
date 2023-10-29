@@ -1,0 +1,14 @@
+<form id="upload-form" phx-submit="save" phx-change="validate">
+  <.live_file_input upload={@uploads.sound} />
+  <button type="submit">Click me to finish</button>
+</form>
+
+<%= for entry <- @uploaded_files do %>
+  <article class="upload-entry">
+    <br /> file name: <%= entry.client_name %>
+    <br /> server file name: <%= entry.filename %>
+    <br /> file size: <%= entry.client_size %>
+    <br /> file type: <%= entry.client_type %>
+    <br /> sentiment: <%= Atom.to_string(entry.sentiment) %>
+  </article>
+<% end %>
